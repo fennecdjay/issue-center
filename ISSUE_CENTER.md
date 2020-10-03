@@ -29,13 +29,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.ISSUE_CENTER }}
         EVENT: issue-center-event
-        ORG: your_org_or_username
-        REPO: your_issue_center_repo_name
+        ORG: fennecdjay
+        REPO: issue-center
       run: |
         echo "{\"event_type\": \"${EVENT}\", \"client_payload\": {\"repo\": \"${{ github.repository }}\"}}" > issue_info
-        curl -d "@issue_info"                                      \
-          -H "Content-Type: application/json"                      \
-          -H "Authorization: token ${{ secrets.BENCHMARK_TOKEN }}" \
-          -H "Accept: application/vnd.github.everest-preview+json" \
-          "https://api.github.com/repos/${ORG}/${REPO}/dispatches"
+        curl -d "@issue_info" -H "Content-Type: application/json" -H "Authorization: token ${{ secrets.BENCHMARK_TOKEN }}" -H "Accept: application/vnd.github.everest-preview+json" "https://api.github.com/repos/${ORG}/${REPO}/dispatches"
 ```
