@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Update repo
-      run: bash repo.sh
+      run: bash repo.sh ${{ github.event.client_payload.repo }}
 
     - name: Update README
       run: bash readme.sh
@@ -21,7 +21,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git -am "Update"
+        git -am "Update (from ${{ github.event.client_payload.repo }})"
 
     - name: Push changes
       uses: ad-m/github-push-action@master
