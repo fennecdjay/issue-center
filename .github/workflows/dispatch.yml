@@ -21,7 +21,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git -am "Update (from ${{ github.event.client_payload.repo }})"
+        git -m "Update (from ${{ github.event.client_payload.repo }})" -a
 
     - name: Push changes
       uses: ad-m/github-push-action@master
