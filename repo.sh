@@ -19,6 +19,12 @@ list_issues() {
   tr '"' ' ' # remove double-quotes
 }
 
+if [ -z "$(ls -A $DIRNAME)" ];
+then
+  rm $DIRNAME
+  exit 0
+fi
+
 # write to file
 cat << EOF > "${1}.md"
 ## $1
