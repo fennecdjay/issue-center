@@ -9,6 +9,9 @@ Following is the list of issues by repo.
 
  * [Improve exp_dot locations](https://github.com/fennecdjay/gwion-ast/issues/8) 
  * [Syntax errors should only underline error location](https://github.com/fennecdjay/gwion-ast/issues/5) 
+## fennecdjay/gwion-bench
+
+
 ## fennecdjay/gwion-docs
 
  * [Document testing.](https://github.com/fennecdjay/gwion-docs/issues/11) 
