@@ -21,7 +21,7 @@ list_issues() {
 
 # write to file
 cat << EOF > "${1}.md"
-## ["$1"]("https://github.com/$1")
+## [$1](https://github.com/$1)
 
 $(list_issues "$1")
 EOF
