@@ -5,8 +5,12 @@ then
   exit 1
 fi
 
-# unconditionnaly create directory for owner
-mkdir -p "$(dirname $1)"
+# clean owner directory, or create directory if it does not exist
+DIRNAME="$(dirname $1)"
+if [ -d "$DIRNAME" ]
+then rm "${DIRNAME}"/*.md
+else mkdir -p "$(dirname $1)"
+fi
 
 # list issues of a repo as markdown links
 list_issues() {

@@ -16,22 +16,44 @@ for each of the repos you want to follow:
     (don't forget to edit ORG and REPO)
 
 ```yml
-name: 'issue-center'
-
 on:
   issues:
     types: [opened, reopened, closed]
 
 jobs:
-    steps:
+  build:
+    name: Update Issue Center
+    runs-on: ubuntu-latest
 
-    - name: call the other repo
+    steps:
+    - run: |
+        echo "{\"event_type\": \"${EVENT}\", \"client_payload\": {\"repo\": \"${{ github.repository }}\"}}" > issue_info
+        curl -d "@issue_info" -H "Content-Type: application/json" -H "Authorization: token ${{ secrets.ISSUE_CENTER }}" -H "Accept: application/vnd.github.everest-preview+json" "https://api.github.com/repos/${ORG}/${REPO}/dispatches"
       env:
         GITHUB_TOKEN: ${{ secrets.ISSUE_CENTER }}
         EVENT: issue-center-event
         ORG: fennecdjay
         REPO: issue-center
-      run: |
+on:
+  issues:
+    types: [opened, reopened, closed]
+
+jobs:
+  build:
+    name: Update Issue Center
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: |
         echo "{\"event_type\": \"${EVENT}\", \"client_payload\": {\"repo\": \"${{ github.repository }}\"}}" > issue_info
-        curl -d "@issue_info" -H "Content-Type: application/json" -H "Authorization: token ${{ secrets.BENCHMARK_TOKEN }}" -H "Accept: application/vnd.github.everest-preview+json" "https://api.github.com/repos/${ORG}/${REPO}/dispatches"
+        curl -d "@issue_info"                                       \
+          -H "Content-Type: application/json"                       \
+          -H "Authorization: token ${{ secrets.ISSUE_CENTER }}"     \
+          -H "Accept: application/vnd.github.everest-preview+json"  \
+          "https://api.github.com/repos/${ORG}/${REPO}/dispatches"
+      env:
+        GITHUB_TOKEN: ${{ secrets.ISSUE_CENTER }}
+        EVENT: issue-center-event
+        ORG: fennecdjay
+        REPO: issue-center
 ```

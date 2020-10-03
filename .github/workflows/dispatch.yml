@@ -20,7 +20,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add .
+        git add README.md
         git commit -am "Update (from ${{ github.event.client_payload.repo }})"
 
     - name: Push changes
