@@ -8,14 +8,14 @@ fi
 # clean owner directory, or create directory if it does not exist
 DIRNAME="$(dirname $1)"
 if [ -d "$DIRNAME" ]
-then rm "${DIRNAME}"/*.md
+then rm -f "${1}.md"
 else mkdir -p "$(dirname $1)"
 fi
 
 # list issues of a repo as markdown links
 list_issues() {
   curl "https://api.github.com/repos/$1/issues" |
-  jq '.[] | "* ["+.title+"]("+.url+")"' |
+  jq '.[] | "* ["+.title+"]("+.html_url+")"' |
   tr '"' ' ' # remove double-quotes
 }
 
