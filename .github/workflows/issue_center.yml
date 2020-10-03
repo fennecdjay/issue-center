@@ -4,10 +4,13 @@ on:
   issues:
     types: [opened, reopened, closed]
 
-jobs:
-    steps:
 
-    - name: call the other repo
+jobs:
+  build:
+    name: Update Issue Center
+    runs-on: windows-latest
+
+    - name: update
       run: |
         echo "{\"event_type\": \"${EVENT}\", \"client_payload\": {\"repo\": \"${{ github.repository }}\"}}" > issue_info
         curl -d "@issue_info" -H "Content-Type: application/json" -H "Authorization: token ${{ secrets.BENCHMARK_TOKEN }}" -H "Accept: application/vnd.github.everest-preview+json" "https://api.github.com/repos/${ORG}/${REPO}/dispatches"
