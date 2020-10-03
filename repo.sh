@@ -19,6 +19,7 @@ list_issues() {
   tr '"' ' ' # remove double-quotes
 }
 
+# remove directory if empty
 if [ -z "$(ls -A $DIRNAME)" ];
 then
   rm $DIRNAME
