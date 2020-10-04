@@ -12,7 +12,7 @@ Following is the list of issues by repo.
 ## fennecdjay/gwion-bench
 
 
-## fennecdjay/gwion-docs
+## [fennecdjay/gwion-docs](https://github.com/fennecdjay/gwion-docs)
 
  * [Document testing.](https://github.com/fennecdjay/gwion-docs/issues/11) 
  * [Include dynamic svg logo](https://github.com/fennecdjay/gwion-docs/issues/10) 
