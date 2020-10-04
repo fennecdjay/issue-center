@@ -25,4 +25,4 @@ Following is the list of issues by repo.
  * [Coverage report CI should not use gwion-action](https://github.com/fennecdjay/Gwion/issues/184) 
  * [Hello! I'd like to work on your project](https://github.com/fennecdjay/Gwion/issues/180) 
  * [Doc: Installation procedure should be documented in the README](https://github.com/fennecdjay/Gwion/issues/179) 
-## fennecdjay/mdr
+## [fennecdjay/mdr](https://github.com/fennecdjay/mdr)
